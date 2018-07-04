@@ -8,8 +8,8 @@ class Album extends Component {
 	  const album = albumData.find( album => {
        return album.slug === this.props.match.params.slug
      });
- 
-     this.state = {
+
+    this.state = {
       album: album,
       currentSong: album.songs[0],
       isPlaying: false
@@ -59,23 +59,23 @@ class Album extends Component {
         <col id="song-number-column" />
         <col id="song-title-column" />
         <col id="song-duration-column" />
-      </colgroup>  
+      </colgroup> 
+
     <tbody>
 		  {
-			this.state.album.songs.map((song, index) => 
-			<div key = {index}>	 
-			<div>
-			<tr id="song-index">{index + 1}</tr>
-			<tr id="song-title">{song.title}</tr>
-			<tr id="song-duration">{song.duration}</tr>
-			</div>
-			</div>
-			)
-		  }										
-		};
-	    </tbody>
-      </table>
+			this.state.album.songs.map((song,index) => 
+			<tr className="song" key={index} onClick={() => this.handleSongClick(song)}> 
+			<td id="song-index">{index + 1}</td>
+			<td id="song-title">{song.title}</td>
+			<td id="song-duration">{song.duration}</td>
+			</tr>
+      )
+    }
+      </tbody>
+		
+	    </table>
       </section>
+  
     );
   }
 }
