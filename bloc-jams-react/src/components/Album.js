@@ -14,7 +14,7 @@ class Album extends Component {
       album: album,
       currentSong: album.songs[0],
       isPlaying: false,
-      isHovered: false
+      newIndex: false
      };
 	 
 	 this.audioElement = document.createElement('audio');
@@ -45,7 +45,14 @@ class Album extends Component {
      }
    }
    
-   
+   handlePrevClick() {
+    const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
+    const newIndex = Math.max(0, currentIndex - 1);
+    const newSong = this.state.album.songs[newIndex];
+    this.setSong(newSong);
+    this.play();
+   }
+
   render() {
     return (
       <section className="album">
@@ -68,15 +75,15 @@ class Album extends Component {
 		  {
 			this.state.album.songs.map( (song,index) => 
       <tr className="song" key={index} onClick={() => this.handleSongClick(song)} 
-        onMouseEnter={ () => this.setState({ isHovered: index+1 }) }
-        onMouseLeave={ () => this.setState({ isHovered: false }) }>
+        onMouseEnter={ () => this.setState({ newIndex: index+1 }) }
+        onMouseLeave={ () => this.setState({ newIndex: false }) }>
 
       <td className="song-actions">
       <button id="song-action-btns">
       {(this.state.currentSong.title === song.title) ? 
         <span className={ this.state.isPlaying ? "ion-pause" : "ion-play" }></span>
         :
-        (this.state.isHovered === index+1) ?
+        (this.state.newIndex === index+1) ?
         <span className="ion-play"></span>
         :
         <span className="song-number">{index+1}</span>
@@ -90,7 +97,12 @@ class Album extends Component {
     }
       </tbody>
 		  </table>
-		  <PlayerBar isPlaying={this.state.isPlaying} currentSong={this.state.currentSong} />
+		  <PlayerBar
+           isPlaying={this.state.isPlaying}
+           currentSong={this.state.currentSong}
+           handleSongClick={() => this.handleSongClick(this.state.currentSong)}
+           handlePrevClick={() => this.handlePrevClick()}
+         />
       </section>
   
     );

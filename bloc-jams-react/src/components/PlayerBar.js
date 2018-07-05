@@ -5,16 +5,17 @@ import React, { Component } from 'react';
      return (
        <section className="player-bar">
           <section id="buttons">
-           <button id="previous">
-             <span className="ion-skip-backward"></span>
+          <button id="previous" onClick={this.props.handlePrevClick}>
+             <span className="ion-md-skip-backward"></span>
            </button>
-           <button id="play-pause">
-           <span className={this.props.isPlaying ? 'ion-pause' : 'ion-play'}></span>
+           <button id="play-pause" onClick={this.props.handleSongClick} >
+           <span className={this.props.isPlaying ? 'ion-md-pause' : 'ion-md-play'}></span>
            </button>
-           <button id="next">
-             <span className="ion-skip-forward"></span>
+           <button id="next" onClick={this.props.handleNextClick}>
+             <span className="ion-md-skip-forward"></span>
            </button>
          </section>
+         
          <section id="time-control">                                                                    
            <div className="current-time">–:––</div>
            <input type="range" className="seek-bar" value="0" />
