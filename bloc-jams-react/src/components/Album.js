@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import albumData from './../data/albums';
+import PlayerBar from './PlayerBar';
 
 class Album extends Component {
 	 constructor(props) {
@@ -24,6 +25,7 @@ class Album extends Component {
      this.audioElement.play();
      this.setState({ isPlaying: true });
    }
+   
     pause() {
      this.audioElement.pause();
      this.setState({ isPlaying: false });
@@ -88,6 +90,7 @@ class Album extends Component {
     }
       </tbody>
 		  </table>
+		  <PlayerBar isPlaying={this.state.isPlaying} currentSong={this.state.currentSong} />
       </section>
   
     );
