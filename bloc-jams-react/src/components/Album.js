@@ -53,6 +53,18 @@ class Album extends Component {
     this.play();
    }
 
+   handleNextClick() {
+    const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
+    const index = Math.max(0, currentIndex + 1);
+    const newSong = this.state.album.songs[index];
+    const activeIndex = this.state.activeIndex === index ? null : index;
+    this.setState({activeIndex});
+    this.setSong(newSong);
+    this.play();
+  }
+
+
+
   render() {
     return (
       <section className="album">
@@ -102,6 +114,7 @@ class Album extends Component {
            currentSong={this.state.currentSong}
            handleSongClick={() => this.handleSongClick(this.state.currentSong)}
            handlePrevClick={() => this.handlePrevClick()}
+           handleNextClick={() => this.handleNextClick()}
          />
       </section>
   
