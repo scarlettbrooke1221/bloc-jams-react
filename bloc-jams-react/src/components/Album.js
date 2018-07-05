@@ -43,11 +43,7 @@ class Album extends Component {
      }
    }
    
-<<<<<<< HEAD
- 
-=======
    
->>>>>>> assignment-15-AudioPlayback
   render() {
     return (
       <section className="album">
@@ -68,17 +64,6 @@ class Album extends Component {
 
     <tbody>
 		  {
-			this.state.album.songs.map((song,index) => 
-			<tr className="song" key={index} onClick={() => this.handleSongClick(song)}> 
-			<td id="song-index">{index + 1}</td>
-			<td id="song-title">{song.title}</td>
-			<td id="song-duration">{song.duration}</td>
-			</tr>
-      )
-    }
-      </tbody>
-		
-	    </table>
 			this.state.album.songs.map( (song,index) => 
       <tr className="song" key={index} onClick={() => this.handleSongClick(song)} 
         onMouseEnter={ () => this.setState({ isHovered: index+1 }) }
