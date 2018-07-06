@@ -15,6 +15,8 @@ class Album extends Component {
       currentSong: album.songs[0],
       currentTime: 0,
        duration: album.songs[0].duration, 
+      formatTime: 0,
+       duration: album.songs[0].duration,
       isPlaying: false,
       newIndex: false
      };
@@ -90,6 +92,17 @@ class Album extends Component {
     this.setState({ currentTime: newTime });
   }
 
+  formatTime(time) {
+    if (isNaN(time) || time === undefined) {
+       return '-:--';
+    }
+    const parsedTime = parseFloat(time);
+    const minutes = Math.floor(parsedTime / 60);
+    const secs = parsedTime - minutes * 60;
+    const roundSecs = Math.floor(secs);
+    return minutes + ':' + roundSecs;
+  }
+
   render() {
     return (
       <section className="album">
@@ -139,10 +152,13 @@ class Album extends Component {
            currentSong={this.state.currentSong} 
            currentTime={this.audioElement.currentTime}
            duration={this.audioElement.duration}
+           formatTime={this.audioElement.formatTime}
+           duration={this.audioElement.duration}
            handleSongClick={() => this.handleSongClick(this.state.currentSong)}
            handlePrevClick={() => this.handlePrevClick()}
            handleNextClick={() => this.handleNextClick()}
            handleTimeChange={(e) => this.handleTimeChange(e)}
+           formatTime={(time) => this.formatTime(time)}
          />
       </section>
   
