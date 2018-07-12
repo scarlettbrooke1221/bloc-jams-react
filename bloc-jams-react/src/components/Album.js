@@ -15,7 +15,7 @@ class Album extends Component {
       currentSong: album.songs[0],
       currentTime: 0,
        duration: album.songs[0].duration, 
-      currentVolume: 0,
+      currentVolume: 0.9,
       isPlaying: false,
       newIndex: false
      };
@@ -100,13 +100,18 @@ componentDidMount() {
     this.setState({currentVolume: newVolume });
   }
 
-  formatTime(seconds) {
-    if (isNaN(seconds)) return "-:--";
-
-    let date = new Date(null);
-    date.setSeconds(seconds);
-    return date.toISOString().substr(14, 5);
-  }
+  formatTime(e) {
+      if (e){
+        const minutes = Math.floor(e / 60);
+        let seconds = Math.floor(e % 60);
+        seconds = ((seconds) < 10) ? ("0" + seconds) : (seconds);
+        const newTime = (minutes) + ":" + (seconds);
+        return newTime;
+      }
+      else {
+        return "-:--";
+      }
+    }
 
   
   render() {
@@ -164,7 +169,8 @@ componentDidMount() {
           handleNextClick={() => this.handleNextClick()}
           handleTimeChange={(e) => this.handleTimeChange(e)}
           handleVolumeChange={(e) => this.handleVolumeChange(e)}
-          formatTime={(seconds) => this.formatTime(seconds)}
+          formatTime={this.formatTime(this.state.currentTime)}
+		   formatDuration={this.formatTime(this.state.duration)}
             />
       </section>
   
