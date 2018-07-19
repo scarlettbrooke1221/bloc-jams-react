@@ -1,0 +1,29 @@
+@import url(https://fonts.googleapis.com/css?family=Kalam|Patrick+Hand|Permanent+Marker);
+
+
+button {
+ font-family: 'Permanent Marker', cursive;
+}
+
+#time-control {
+  width: 660px;
+  margin: auto;
+}
+
+#volume-control {
+  width: auto;
+  margin: auto;
+}
+
+#volume-control table {
+  width: 525px;
+  margin: auto;
+}
+
+#volume-control td {
+  
+  text-align: center;
+}
+
+
+
