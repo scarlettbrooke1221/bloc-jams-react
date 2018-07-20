@@ -17,13 +17,13 @@ class Album extends Component {
       currentTime: 0,
        duration: album.songs[0].duration, 
       currentVolume: 0.9,
-      isPlaying: true,
+      isPlaying: false,
       newIndex: false
      };
 	 
 	 this.audioElement = document.createElement('audio');
    this.audioElement.src = album.songs[0].audioSrc;
-   this.audioElement.volume = .9;
+   this.audioElement.volume = 0.9;
    }
 componentDidMount() {
     this.eventListeners = {
@@ -121,9 +121,9 @@ componentDidMount() {
       <section id="album-info">
       <img id="album-cover-art" src={this.state.album.albumCover} alt={this.state.album.title}/> 
       <div className="album-details">
-      <h1 id="album-title">Album: {this.state.album.title}</h1>
-      <h2 className="artist">Artist: {this.state.album.artist}</h2>
-      <div id="release-info">Release Date, Production Company: {this.state.album.releaseInfo}</div>
+      <h1 id="album-title">{this.state.album.title}</h1>
+      <h2 className="artist">{this.state.album.artist}</h2>
+      <div id="release-info">{this.state.album.releaseInfo}</div>
       </div>
       </section>
 		<table id="song-list">
