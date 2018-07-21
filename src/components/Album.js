@@ -23,7 +23,7 @@ class Album extends Component {
 	 
 	 this.audioElement = document.createElement('audio');
    this.audioElement.src = album.songs[0].audioSrc;
-   this.audioElement.volume = 0;
+   this.audioElement.volume = 0.9;
    }
 componentDidMount() {
     this.eventListeners = {
