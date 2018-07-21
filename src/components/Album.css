@@ -1,0 +1,28 @@
+@import url(https://fonts.googleapis.com/css?family=Kalam|Patrick+Hand|Permanent+Marker);
+
+.album {
+  font-family: 'Permanent Marker', cursive;
+}
+
+.album img {
+  margin-top: 30px;
+  width: 350px;
+  height: 150px;
+  position: relative;
+  
+}
+
+.album > a {
+  padding-top: 20px;
+  margin: 20px;
+  position: relative;
+}
+
+.album table {
+  width: 360px;
+  font-family: 'Permanent Marker', cursive;
+  margin: auto;
+}
+
+
+
