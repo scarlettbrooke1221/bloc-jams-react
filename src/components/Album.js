@@ -147,7 +147,7 @@ componentDidMount() {
       <td key = {index} className="song-actions">
       <button>
         <span>
-       <span className="song-number">{(this.playSongCondition(song)) || (!this.state.isPlaying && song === this.state.currentSong && this.state.currentTime > 0) ? (!this.state.isPlaying ? <i id="font-awesome-play">&#9658;</i> : "") : index + 1}</span>
+       <span className="song-number">{(this.playSongCondition(song)) || (!this.state.isPlaying && song === this.state.currentSong && this.state.currentTime > 0) ? (!this.state.isPlaying ? <i>&#9658;</i> : "") : index + 1}</span>
 
         <span className={(this.playSongCondition(song)) ? "" : "ion-play"}></span>
 
