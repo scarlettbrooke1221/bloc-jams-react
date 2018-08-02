@@ -114,6 +114,10 @@ componentDidMount() {
       }
     }
 
+    playSongCondition(song) {
+      return this.state.isPlaying && song === this.state.currentSong && this.state.currentTime !== this.state.duration;
+    }
+  
   
   render() {
     return (
@@ -135,22 +139,21 @@ componentDidMount() {
 
     <tbody>
 		  {
-			this.state.album.songs.map( (song,index) => 
+			this.state.album.songs.map((song,index) => 
       <tr className="song" key={index} onClick={() => this.handleSongClick(song)} 
         onMouseEnter={ () => this.setState({ newIndex: index+1 }) }
         onMouseLeave={ () => this.setState({ newIndex: false }) }>
 
-      <td className="song-actions">
-      <button id="song-action-btns">
-      {(this.state.currentSong.title === song.title) ? 
-        <span className={ this.state.isPlaying ? "ion-pause" : "ion-play" }></span>
-        :
-        (this.state.newIndex === index+1) ?
-        <span className="ion-play"></span>
-        :
-        <span className="song-number">{index+1}</span>
-      }
-    </button>
+      <td key = {index} className="song-actions">
+      <button>
+        <span>
+       <span className="song-number">{(this.playSongCondition(song)) || (!this.state.isPlaying && song === this.state.currentSong && this.state.currentTime > 0) ? (!this.state.isPlaying ? <i id="font-awesome-play">&#9658;</i> : "") : index + 1}</span>
+
+        <span className={(this.playSongCondition(song)) ? "" : "ion-play"}></span>
+
+         <span className={(this.playSongCondition(song)) ? "ion-pause" : ""}></span>
+          </span>
+      </button>
   </td>
   <td className="song-title">{song.title}</td>
   <td className="song-duration">{this.formatTime(song.duration)}</td>
